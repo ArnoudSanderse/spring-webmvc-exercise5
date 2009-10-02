@@ -1,5 +1,6 @@
 package arnoud.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,20 +11,20 @@ import org.hibernate.Session;
 import org.hibernate.Query;
 
 @Entity
-@Table(name="STUDENT")
-public class Student {
+@Table(name="Student")
+public class Student implements Serializable {
   @Id
-  @Column(name="STUDENT_ID")
+  @Column(name="Student_ID")
   @GeneratedValue(strategy=GenerationType.AUTO)
   private Integer id;
   
-  @Column(name="NAME",nullable=false,unique=true)
+  @Column(name="Name",nullable=false,unique=true)
   private String name;
   
-  @Column(name="SCHOOL",nullable=false,unique=true)
+  @Column(name="School",nullable=false,unique=true)
   private String school;
 
-  @Column(name="TRAINING",nullable=false,unique=true)
+  @Column(name="Training",nullable=false,unique=true)
   private String training;
 
   public Student(){}

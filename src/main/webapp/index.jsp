@@ -5,7 +5,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Studentpring webmvc exercise 5</title>
+        <title>Spring webmvc exercise 5</title>
+        <meta http-equiv="refresh" content="1;hello" />
     </head>
     <body>
         <h1>No access</h1>
