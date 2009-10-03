@@ -1,24 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>arnoud</groupId>
   <artifactId>spring-webmvc-exercise5</artifactId>
+  <name>spring-webmvc-exercise5 JEE5 Webapp</name>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>spring-webmvc-exercise5 JEE5 Webapp</name>
-  <url>http://maven.apache.org</url>
+
+<!--  <url>http://maven.apache.org</url> -->
+
   <properties>
-      <spring.version>3.0.0.M3</spring.version>
+      <spring.version>3.0.0.M4</spring.version>
       <netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
   </properties>
 
   <repositories>
+    <repository>
+      <id>spring-milestone</id>
+      <name>Spring Milestone Repository</name>
+      <url>http://maven.springframework.org/milestone</url>
+    </repository>
+    <repository>
+      <id>spring-release</id>
+      <name>Spring Release Repository</name>
+      <url>http://maven.springframework.org/release</url>
+    </repository>
+    <repository>
+      <id>spring-external</id>
+      <name>Spring External Repository</name>
+      <url>http://maven.springframework.org/external</url>
+    </repository>
+
+<!--
     <repository>
       <url>http://download.java.net/maven/2</url>
       <id>hibernate-support</id>
       <layout>default</layout>
       <name>Repository for library Library[hibernate-support]</name>
     </repository>
+-->
+
    <repository>
       <id>jboss</id>
       <url>http://repository.jboss.com/maven2</url>
@@ -28,86 +50,21 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
+
+<!--
     <repository>
             <id>java.net</id>
             <name>java.net</name>
             <url>http://download.java.net/maven/2/</url>
     </repository>
-    <repository>
-            <id>SpringSource Enterprise Bundle Repository - External Bundle Milestones</id>
-            <url>http://repository.springsource.com/maven/bundles/milestone</url>
-    </repository>
-    <repository>
-            <id>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</id>
-            <url>http://repository.springsource.com/maven/bundles/release</url>
-    </repository>
-    <repository>
-            <id>SpringSource Enterprise Bundle Repository - External Bundle Releases</id>
-            <url>http://repository.springsource.com/maven/bundles/external</url>
-    </repository>
+-->
   </repositories>
 
   <dependencies>
     <dependency>
       <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <version>2.5</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>jsp-api</artifactId>
-      <version>2.1</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-        <groupId>javax.persistence</groupId>
-        <artifactId>persistence-api</artifactId>
-        <version>1.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>hsqldb</groupId>
-      <artifactId>hsqldb</artifactId>
-      <version>1.8.0.7</version>
-    </dependency>
-
-    <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.web.servlet</artifactId>
-            <version>3.0.0.M3</version>
-    </dependency>
-
-    <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.orm</artifactId>
-            <version>3.0.0.M3</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-      <version>2.0.6</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.web.servlet</artifactId>
-      <version>3.0.0.M3</version>
     </dependency>
 
     <dependency>
@@ -117,26 +74,94 @@
       <type>jar</type>
     </dependency>
 
-   <!-- Hibernate Project dependencies -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <version>1.8.0.7</version>
+    </dependency>
+
+    <!-- Spring framework libraries -->
+    <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!-- Hibernate Project dependencies -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>3.3.2.GA</version>
     </dependency>
+
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
       <version>3.4.0.GA</version>
     </dependency>
+
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-annotations</artifactId>
       <version>3.4.0.GA</version>
     </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>2.1.3-b05</version>
+      <scope>provided</scope>
+    </dependency>
+
     <dependency>
   	  <groupId>cglib</groupId>
       <artifactId>cglib</artifactId>
 	  <version>2.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.6</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring.test</artifactId>
+      <version>${spring.version}</version>
     </dependency>
   </dependencies>
 
