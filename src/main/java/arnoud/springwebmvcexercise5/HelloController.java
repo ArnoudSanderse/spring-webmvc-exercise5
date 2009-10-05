@@ -5,16 +5,18 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
  * @author arnoud
  */
 @Controller
+@Transactional
 public class HelloController {
     @Autowired
     public SessionFactory sessionFactory;
@@ -39,7 +41,7 @@ public class HelloController {
             session.close();
         }
 
-        session = sessionFactory.openSession();
+        session = sessionFactory.getCurrentSession();
         try {
             Student student = new Student().getByName("Arnoud",session);
             message += "<br>- Recieved data: " + student.toString();
@@ -48,7 +50,6 @@ public class HelloController {
         } finally {
             session.close();
         }
-
 
         model.addAttribute("Message", message);
         sessionFactory.close();
