@@ -1,9 +1,9 @@
 package arnoud.springwebmvcexercise5;
 
 import arnoud.model.*;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,33 +26,31 @@ public class HelloController {
         String message = "1+1=10";
 
         Session session = sessionFactory.getCurrentSession();
-        Transaction tx = null;
 
         try {
-            tx = session.beginTransaction();
-            Student student = new Student("Arnoud", "HvA", "IvI");
+            Student student = new Student(1, "Arnoud", "HvA", "IvI");
             session.save(student);
-            message += "<br>- Hello " + student.getName();
-            message += "<br>- Saved data: " + student.toString() + "<br>";
-            tx.commit();
+            message += "<br>- Saved data: " + student.toString();
+            session.flush();
         } catch (Exception e) {
             message += "<br>- Error saving data: " + e.getMessage();
-        } finally {
-            session.close();
         }
 
-        session = sessionFactory.getCurrentSession();
         try {
-            Student student = new Student().getByName("Arnoud",session);
-            message += "<br>- Recieved data: " + student.toString();
+            Query q = session.createQuery("FROM Student");
+            if(q.list().size() > 0){
+                Student student = (Student) q.list().get(0);//new Student().getByName("Arnoud",session);
+                message += "<br>- Recieved data: " + student.toString();
+            }
+            else {
+                message += "<br>- No data Recieved";
+            }
+            session.flush();
         } catch (Exception e) {
             message += "<br>- Error retrieving data: " + e.getMessage();
-        } finally {
-            session.close();
         }
 
         model.addAttribute("Message", message);
-        sessionFactory.close();
         return "hello";
     } 
 }

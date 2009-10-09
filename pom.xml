@@ -12,7 +12,7 @@
 
   <properties>
       <spring.version>3.0.0.M4</spring.version>
-      <netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
+      <netbeans.hint.deploy.server>J2EE</netbeans.hint.deploy.server>
   </properties>
 
   <repositories>
@@ -32,15 +32,6 @@
       <url>http://maven.springframework.org/external</url>
     </repository>
 
-<!--
-    <repository>
-      <url>http://download.java.net/maven/2</url>
-      <id>hibernate-support</id>
-      <layout>default</layout>
-      <name>Repository for library Library[hibernate-support]</name>
-    </repository>
--->
-
    <repository>
       <id>jboss</id>
       <url>http://repository.jboss.com/maven2</url>
@@ -50,14 +41,6 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
-
-<!--
-    <repository>
-            <id>java.net</id>
-            <name>java.net</name>
-            <url>http://download.java.net/maven/2/</url>
-    </repository>
--->
   </repositories>
 
   <dependencies>
@@ -216,16 +199,14 @@
         <plugin>
       <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.3</version>
           <configuration>
             <includes>
-              <include>**/*Tests.java</include>
+              <include>**/*Test.java</include>
             </includes>
             <excludes>
               <exclude>**/Abstract*.java</exclude>
             </excludes>
-<!--
-            <junitArtifactName>org.junit:com.springsource.org.junit</junitArtifactName>
-			<argLine>-Xms256m -Xmx512m -javaagent:/home/mozinator/.m2/repository/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar</argLine> -->
           </configuration>
         </plugin>
     </plugins>

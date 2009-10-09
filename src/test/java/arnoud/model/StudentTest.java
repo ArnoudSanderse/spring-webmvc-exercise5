@@ -1,18 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package arnoud.model;
 
 import junit.framework.TestCase;
-import org.hibernate.Session;
 
 /**
  *
  * @author arnoud
  */
 public class StudentTest extends TestCase {
+    Student instance;
+    String name = "Aap";
+    String school = "Noot";
+    String training = "Mies";
     
     public StudentTest(String testName) {
         super(testName);
@@ -21,6 +19,7 @@ public class StudentTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+        instance = new Student(name, school, training);
     }
 
     @Override
@@ -33,12 +32,9 @@ public class StudentTest extends TestCase {
      */
     public void testGetId() {
         System.out.println("getId");
-        Student instance = new Student();
-        Integer expResult = null;
+        Integer expResult = 0;
         Integer result = instance.getId();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -46,11 +42,11 @@ public class StudentTest extends TestCase {
      */
     public void testSetId() {
         System.out.println("setId");
-        Integer i = null;
-        Student instance = new Student();
-        instance.setId(i);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Integer id = 22;
+        instance.setId(id);
+        int expResult = 22;
+        int result = instance.getId();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -58,12 +54,9 @@ public class StudentTest extends TestCase {
      */
     public void testGetName() {
         System.out.println("getName");
-        Student instance = new Student();
-        String expResult = "";
+        String expResult = "Aap";
         String result = instance.getName();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,11 +64,11 @@ public class StudentTest extends TestCase {
      */
     public void testSetName() {
         System.out.println("setName");
-        String name = "";
-        Student instance = new Student();
+        name = "Arnoud";
         instance.setName(name);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expResult = "Arnoud";
+        String result = instance.getName();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -83,12 +76,9 @@ public class StudentTest extends TestCase {
      */
     public void testGetSchool() {
         System.out.println("getSchool");
-        Student instance = new Student();
-        String expResult = "";
+        String expResult = "Noot";
         String result = instance.getSchool();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -96,11 +86,11 @@ public class StudentTest extends TestCase {
      */
     public void testSetSchool() {
         System.out.println("setSchool");
-        String school = "";
-        Student instance = new Student();
+        school = "HvA";
         instance.setSchool(school);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expResult = "HvA";
+        String result = instance.getSchool();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -108,12 +98,9 @@ public class StudentTest extends TestCase {
      */
     public void testGetTraining() {
         System.out.println("getTraining");
-        Student instance = new Student();
-        String expResult = "";
+        String expResult = "Mies";
         String result = instance.getTraining();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -121,26 +108,11 @@ public class StudentTest extends TestCase {
      */
     public void testSetTraining() {
         System.out.println("setTraining");
-        String training = "";
-        Student instance = new Student();
+        training = "IvI";
         instance.setTraining(training);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getByName method, of class Student.
-     */
-    public void testGetByName() {
-        System.out.println("getByName");
-        String name = "";
-        Session session = null;
-        Student instance = new Student();
-        Student expResult = null;
-        Student result = instance.getByName(name, session);
+        String expResult = "IvI";
+        String result = instance.getTraining();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -148,12 +120,9 @@ public class StudentTest extends TestCase {
      */
     public void testToString() {
         System.out.println("toString");
-        Student instance = new Student();
-        String expResult = "";
+        String expResult = "0 - Aap - Noot - Mies";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
 }
